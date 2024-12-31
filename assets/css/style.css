@@ -1,0 +1,88 @@
+/* Global styles */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+  }
+  
+  /* Style for event list */
+  #event-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Styles for individual events */
+  .event {
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+  
+  /* Upcoming event with red underline (thicker and angled) */
+  .upcoming-event {
+    border-bottom: 3px solid red;
+    transform: rotate(-2.15deg); /* slight angle */
+    display: inline-block;
+  }
+  
+  /* Past events appear in grey */
+  .past-event {
+    color: grey;
+  }
+  
+  /* Hide events that are over a year old */
+  .hidden-event {
+    display: none;
+  }  
+
+  /* Ensure event links do not change color */
+.event-link {
+    color: inherit; /* Inherits the text color of the parent element */
+    text-decoration: none;
+  }
+  
+  .event-link:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+  
+  /* Define the shake animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+  }
+  
+  /* Apply the shake effect on hover for each event */
+  .event:hover {
+    animation: shake 0.3s ease-in-out;
+    cursor: pointer; /* Optional: change cursor to pointer on hover */
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+      }
+  }
+
+/* Button styling: Plain text in Courier New without any link colors */
+.filter-btn {
+    font-family: "Courier New", Courier, monospace; /* Set font to Courier New */
+    font-size: 16px; /* Set the font size */
+    color: black; /* Ensure buttons are black text */
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    margin: 5px; /* Add some margin between buttons */
+    cursor: pointer; /* Show pointer cursor on hover */
+    text-decoration: none; /* Remove underline or any link style */
+  }
+  
+  .filter-btn:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+    color: red; /* Prevent any color change on hover */
+    /* border-bottom: 1.5px solid red; */
+    transform: rotate(-2.15deg); /* slight angle */
+  
+  }
+  
+  .filter-btn:focus {
+    outline: none; /* Remove focus outline */
+  }

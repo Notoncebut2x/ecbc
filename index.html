@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <main>
+        <div class="events">
+    <h1>East Coast ⚡ Bike Events</h1>
+
+    <!-- List of events -->
+    <ul id="event-list">
+        
+            <li class="event" data-start-date="2025-03-15" data-location="Chicago, Illinois">
+                
+                <!-- Event title, date, and link to website -->
+                
+                    March 15, 2025: 
+                
+                <a href="https://www.instagram.com/rat.patrol.chicago/" class="event-link">Saint Ratricks Day</a>
+                
+                <!-- Event location -->
+                <br /><small>Chicago, Illinois</small>
+            </li>
+        
+            <li class="event" data-start-date="2025-04-18" data-location="Frederick, Maryland">
+                
+                <!-- Event title, date, and link to website -->
+                
+                    April 18, 2025: 
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1XARdIB9f7I4oMxmoB8CLJHqW-oSggiar09qleqT7JCgceg/viewform" class="event-link">DC Bike Polo Presents: Thaw XI</a>
+                
+                <!-- Event location -->
+                <br /><small>Frederick, Maryland</small>
+            </li>
+        
+            <li class="event" data-start-date="2024-10-31" data-end-date="2024-10-31" data-location="New York, New York">
+                
+                <!-- Event title, date, and link to website -->
+                
+                    October 31, 2024 - October 31, 2024: 
+                
+                <a href="" class="event-link">Bike Kill</a>
+                
+                <!-- Event location -->
+                <br /><small>New York, New York</small>
+            </li>
+        
+            <li class="event" data-start-date="2024-10-12" data-location="Baltimore, Maryland">
+                
+                <!-- Event title, date, and link to website -->
+                
+                    October 12, 2024: 
+                
+                <a href="https://www.instagram.com/gravelratrace/" class="event-link">Gravel Rat</a>
+                
+                <!-- Event location -->
+                <br /><small>Baltimore, Maryland</small>
+            </li>
+        
+            <li class="event" data-start-date="2024-07-06" data-end-date="2024-07-07" data-location="New York, New York">
+                
+                <!-- Event title, date, and link to website -->
+                
+                    July 06, 2024 - July 07, 2024: 
+                
+                <a href="https://www.instagram.com/warriorsnyc/" class="event-link">Warriors Bike Ride</a>
+                
+                <!-- Event location -->
+                <br /><small>New York, New York</small>
+            </li>
+        
+    </ul>
+</div>
+
+<!-- Footer with dynamic buttons -->
+<div class="footer">
+    <!-- <h2>Filter by Location:</h2> -->
+    <button class="filter-btn" id="reset-filter">East Coast</button> <!-- Reset filter button -->
+    <!-- Dynamically create buttons for each unique location -->
+    
+    
+        <button class="filter-btn location-btn" data-location="Chicago, Illinois">Chicago, Illinois</button>
+    
+        <button class="filter-btn location-btn" data-location="Frederick, Maryland">Frederick, Maryland</button>
+    
+        <button class="filter-btn location-btn" data-location="New York, New York">New York, New York</button>
+    
+        <button class="filter-btn location-btn" data-location="Baltimore, Maryland">Baltimore, Maryland</button>
+    
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const events = document.querySelectorAll('.event');
+    const locationButtons = document.querySelectorAll('.location-btn');
+    const resetButton = document.getElementById('reset-filter');
+    
+    // Reset transparency to default when the "East Coast" button is clicked
+    resetButton.addEventListener('click', function () {
+        events.forEach(event => {
+            event.style.opacity = '1'; // Reset opacity
+        });
+    });
+
+    // Add filter logic for each location button
+    locationButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const selectedLocation = this.dataset.location.toLowerCase();
+            events.forEach(event => {
+                const eventLocation = event.dataset.location.toLowerCase();
+                if (eventLocation.includes(selectedLocation)) {
+                    event.style.opacity = '1'; // Full opacity for matching events
+                } else {
+                    event.style.opacity = '0.5'; // 50% opacity for non-matching events
+                }
+            });
+        });
+    });
+
+    // JavaScript for adding classes to past/upcoming events and hiding old events (as before)
+    const currentDate = new Date();
+    events.forEach(event => {
+        const startDate = new Date(event.dataset.startDate);
+        const endDate = event.dataset.endDate ? new Date(event.dataset.endDate) : startDate;
+
+        // Add "past-event" class to past events
+        if (endDate < currentDate) {
+            event.classList.add('past-event');
+        }
+
+        // Add "upcoming-event" class to the next upcoming event
+        if (startDate >= currentDate && !document.querySelector('.upcoming-event')) {
+            event.classList.add('upcoming-event');
+        }
+
+        // Hide events older than a year
+        const oneYearAgo = new Date();
+        oneYearAgo.setFullYear(currentDate.getFullYear() - 1);
+
+        if (endDate < oneYearAgo) {
+            event.classList.add('hidden-event');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Select the <ul> element with id="event-list"
+    const eventList = document.getElementById('event-list');
+
+    // Ensure the element exists
+    if (eventList) {
+      // Select all anchor tags within the <ul>
+      const links = eventList.getElementsByTagName('a');
+
+      // Loop through each link and set the target attribute to "_blank"
+      for (const link of links) {
+        link.setAttribute('target', '_blank');
+      }
+    }
+  });
+</script>
+
+ <!-- This renders the main content of your pages -->
+    </main>
+
+</body>
+</html>
