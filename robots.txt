@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/ecbe/sitemap.xml
+Sitemap: http://notoncebut2x.github.io/ecbe/sitemap.xml
