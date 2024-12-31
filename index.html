@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/ecbe/assets/css/style.css">
 </head>
 <body>
 
@@ -148,22 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Select the <ul> element with id="event-list"
-    const eventList = document.getElementById('event-list');
-
-    // Ensure the element exists
-    if (eventList) {
-      // Select all anchor tags within the <ul>
-      const links = eventList.getElementsByTagName('a');
-
-      // Loop through each link and set the target attribute to "_blank"
-      for (const link of links) {
-        link.setAttribute('target', '_blank');
-      }
-    }
-  });
 </script>
 
  <!-- This renders the main content of your pages -->
