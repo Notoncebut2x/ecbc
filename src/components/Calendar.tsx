@@ -218,6 +218,13 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
           );
         })}
       </ul>
+      <div className="mt-8">
+        <pre className="text-center select-none text-[0.5rem] leading-[0.5rem]">
+          {'   \\  /   \\  /   \\  /   \\  /   \\  /  \n'}
+          {'---///----///----///----///----///---\n'}
+          {'  /  \\   /  \\   /  \\   /  \\   /  \\  '}
+        </pre>
+      </div>
     </div>
   );
 }

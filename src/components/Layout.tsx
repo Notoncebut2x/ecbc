@@ -57,7 +57,7 @@ export default function Layout({
         <main className="min-h-screen p-8">
           <div className="w-full max-w-2xl mx-auto text-lg font-['Courier_New']">
             <h1 className="text-center mb-4 text-[1.75rem] font-bold">
-              <Link href="/" className="rotate-hover">
+              <Link href="/" className="rotate-hover text-black">
                 East Coast ⚡ Bike Calendar
               </Link>
             </h1>
@@ -68,7 +68,7 @@ export default function Layout({
                   <Link
                     key={href}
                     href={href}
-                    className={`rotate-hover px-2 ${pathname === href ? 'font-bold underline' : ''}`}
+                    className={`rotate-hover px-2 text-black ${pathname === href ? 'font-bold underline' : ''}`}
                   >
                     {label}
                   </Link>
@@ -81,7 +81,7 @@ export default function Layout({
                     <button
                       key={location}
                       onClick={() => onLocationSelect(location === selectedLocation ? null : location)}
-                      className={`rotate-hover px-2 ${selectedLocation === location ? 'font-bold underline' : ''}`}
+                      className={`rotate-hover px-2 text-black ${selectedLocation === location ? 'font-bold underline' : ''}`}
                     >
                       {location.split(',')[0]}
                     </button>
@@ -105,7 +105,7 @@ export default function Layout({
                 href="https://buymeacoffee.com/notoncebut2x" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="rotate-hover inline-block"
+                className="rotate-hover inline-block text-black"
               >
                 <pre className="text-[0.6rem] leading-[0.6rem] select-none">
                   {'         {\n'}
@@ -114,12 +114,12 @@ export default function Layout({
                   {'    .-{   }   }-.\n'}
                   {'   (   }     {   )\n'}
                   {'   |`-.._____..-\'|\n'}
-                  {'   |             ;--.\n'}
-                  {'   |   Buy me   (__  \\\n'}
-                  {'   |      a      | )  )\n'}
-                  {'   |   coffee    |/  /\n'}
-                  {'   |             /  /\n'}
-                  {'   \\             y\'\n'}
+                  {'      |             ;--.\n'}
+                  {'       |   Buy me   (__  \\\n'}
+                  {'        |      a      | )  )\n'}
+                  {'       |   coffee    |/  /\n'}
+                  {'      |             /  /\n'}
+                  {'     \\             y\'\n'}
                   {'    `-.._____..-\''}
                 </pre>
               </a>

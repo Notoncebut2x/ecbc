@@ -88,7 +88,7 @@ export const events: CalendarEvents = [
     link: 'https://www.facebook.com/groups/310740799305361',
     frequency: 'weekly',
     recurringPattern: {
-      dayOfWeek: 1  // Tuesday
+      dayOfWeek: 2  // Tuesday
     }
   },
   {
@@ -113,7 +113,16 @@ export const events: CalendarEvents = [
     recurringPattern: {
       dayOfWeek: 4  // Thursday
     }
+  },
+  {
+    id: '12',
+    title: 'Dirt Rooster Gravel Ride',
+    date: '2025-03-23',
+    location: 'Baltimore, Maryland',
+    link: 'https://www.instagram.com/p/DHMGShDsr80/',
+    frequency: 'annual'
   }
+  
   // Add new events here following this format:
   // {
   //   id: '10',  // increment this number

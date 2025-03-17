@@ -20,12 +20,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family);
 }
 
-a {
+a, button {
   color: #2563eb; /* Tailwind blue-600 */
   text-decoration: none;
 }
 
-a:hover {
+a:hover, button:hover {
   color: #ef4444; /* Tailwind red-500 */
 }
 
