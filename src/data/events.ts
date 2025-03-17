@@ -121,8 +121,18 @@ export const events: CalendarEvents = [
     location: 'Baltimore, Maryland',
     link: 'https://www.instagram.com/p/DHMGShDsr80/',
     frequency: 'annual'
+  },
+  {
+    id: '13',
+    title: 'Holy City Spin',
+    date: '2025-04-23',
+    location: 'Charleston, South Carolina',
+    link: 'https://www.instagram.com/holycityspin/',
+    frequency: 'weekly',
+    recurringPattern: {
+      dayOfWeek: 3  // Wednesday
+    }
   }
-  
   // Add new events here following this format:
   // {
   //   id: '10',  // increment this number
