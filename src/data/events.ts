@@ -132,6 +132,14 @@ export const events: CalendarEvents = [
     recurringPattern: {
       dayOfWeek: 3  // Wednesday
     }
+  },
+  {
+    id: '14',
+    title: 'Ride for Gaza',
+    date: '2025-03-30',
+    location: 'New York, New York',
+    link: 'https://partiful.com/e/2pdBb3JUXFDYe68QSNq0',
+    frequency: 'annual'
   }
   // Add new events here following this format:
   // {
