@@ -17,7 +17,7 @@ export const events: CalendarEvents = [
     title: 'Saint Ratricks Day',
     date: '2025-03-15',
     location: 'Chicago, Illinois',
-    link: 'https://www.instagram.com/chicagobikepolo',
+    link: 'https://www.instagram.com/rat.patrol.chicago',
     frequency: 'annual'
   },
   {
@@ -41,7 +41,7 @@ export const events: CalendarEvents = [
     title: 'Gravel Rat',
     date: '2024-10-12',
     location: 'Baltimore, Maryland',
-    link: 'https://www.instagram.com/gravelrat',
+    link: 'https://www.instagram.com/gravelratrace/',
     frequency: 'annual'
   },
   {
