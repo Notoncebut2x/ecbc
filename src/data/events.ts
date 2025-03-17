@@ -115,9 +115,9 @@ export const events: CalendarEvents = [
     }
   },
   {
-    id: '12',
+    id: '15',
     title: 'Dirt Rooster: Gravel Ride',
-    date: '2025-03-23',
+    date: '2025-04-23',
     location: 'Baltimore, Maryland',
     link: 'https://www.instagram.com/p/DHMGShDsr80/',
     frequency: 'annual'
