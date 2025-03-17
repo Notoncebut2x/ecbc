@@ -15,7 +15,8 @@ import {
   subMonths,
   getWeeksInMonth,
   getDay,
-  getDaysInMonth
+  getDaysInMonth,
+  parseISO
 } from 'date-fns';
 
 interface CalendarProps {
@@ -33,7 +34,7 @@ function getCurrentOccurrence(event: CalendarEvent, today: Date): Date | null {
   if (!isValidDate(today)) return null;
   
   if (event.frequency === 'annual') {
-    return new Date(event.date);
+    return parseISO(event.date);
   }
 
   const currentDate = new Date(today);
@@ -142,7 +143,7 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
         if (event.frequency === 'annual') {
           return [{
             ...event,
-            displayDate: new Date(event.date),
+            displayDate: parseISO(event.date),
             isRecurring: false
           }];
         }
