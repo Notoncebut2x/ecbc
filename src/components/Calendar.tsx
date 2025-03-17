@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, memo } from 'react';
-import { CalendarEvent } from '@/types/calendar';
+import { CalendarEvent, WeekOfMonth, ProcessedEvent } from '@/types/calendar';
 import { 
   format, 
   addDays, 
@@ -23,12 +23,6 @@ interface CalendarProps {
   selectedLocation: string | null;
   selectedFrequency: CalendarEvent['frequency'] | null;
   onReset: () => void;
-}
-
-interface ProcessedEvent extends CalendarEvent {
-  displayDate: Date;
-  isRecurring: boolean;
-  occurrenceType?: 'previous' | 'current' | 'next';
 }
 
 function isValidDate(date: Date): boolean {
@@ -68,8 +62,15 @@ function getCurrentOccurrence(event: CalendarEvent, today: Date): Date | null {
           date = subDays(date, 1);
         }
       } else {
-        const weekMap = { first: 0, second: 1, third: 2, fourth: 3 };
-        date = addDays(date, weekMap[weekOfMonth] * 7);
+        const weekMap: Record<Exclude<WeekOfMonth, 'last'>, number> = {
+          first: 0,
+          second: 1,
+          third: 2,
+          fourth: 3
+        };
+        if (weekOfMonth in weekMap) {
+          date = addDays(date, weekMap[weekOfMonth as keyof typeof weekMap] * 7);
+        }
       }
     }
 
@@ -191,10 +192,10 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
 
     return {
       sortedEvents: [
-        ...futureEvents.sort((a, b) => a.displayDate.getTime() - b.displayDate.getTime()),
-        ...pastEvents.sort((a, b) => b.displayDate.getTime() - a.displayDate.getTime())
+        ...futureEvents.sort((a: ProcessedEvent, b: ProcessedEvent) => b.displayDate.getTime() - a.displayDate.getTime()),
+        ...pastEvents.sort((a: ProcessedEvent, b: ProcessedEvent) => b.displayDate.getTime() - a.displayDate.getTime())
       ],
-      nextUpcomingEvent: futureEvents[0] || null
+      nextUpcomingEvent: futureEvents.sort((a, b) => a.displayDate.getTime() - b.displayDate.getTime())[0] || null
     };
   }, [processedEvents, today]);
 
@@ -209,7 +210,7 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
 
           return (
             <EventItem 
-              key={`${event.id}-${event.occurrenceType || 'single'}`}
+              key={`${event.id}-${(event as ProcessedEvent).occurrenceType || 'single'}`}
               event={event}
               isPast={isPast}
               isNextUpcoming={isNextUpcoming}
@@ -236,7 +237,7 @@ const EventItem = memo(function EventItem({ event, isPast, isNextUpcoming }: { e
           href={event.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="rotate-hover text-red-500 hover:text-red-600"
+          className={`rotate-hover ${isPast ? 'text-red-300 hover:text-red-400' : 'text-red-500 hover:text-red-600'}`}
         >
           {event.title}
         </a>

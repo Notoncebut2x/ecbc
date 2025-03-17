@@ -20,27 +20,27 @@ export type CalendarEvent = z.infer<typeof CalendarEventSchema>;
 export type WeekOfMonth = 'first' | 'second' | 'third' | 'fourth' | 'last';
 export type Frequency = 'annual' | 'monthly' | 'weekly';
 
+export interface MonthlyPattern {
+  dayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  weekOfMonth: WeekOfMonth;
+}
+
+export interface WeeklyPattern {
+  dayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+}
+
 export interface RecurringPattern {
   dayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   weekOfMonth?: WeekOfMonth;
-}
-
-export interface CalendarEvent {
-  id: string;
-  title: string;
-  date: string;
-  time?: string;
-  location: string;
-  description?: string;
-  link?: string;
-  frequency: Frequency;
-  recurringPattern?: RecurringPattern;
 }
 
 export interface ProcessedEvent extends CalendarEvent {
   displayDate: Date;
   isRecurring: boolean;
   occurrenceType?: 'previous' | 'current' | 'next';
+  link?: string;
+  title: string;
+  location: string;
 }
 
 export type CalendarEvents = CalendarEvent[]; 

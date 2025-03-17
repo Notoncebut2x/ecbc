@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // Enable static exports
+  output: 'export',
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
-  basePath: '/east-coast-bike-calendar', // Replace with your repo name
-  assetPrefix: '/east-coast-bike-calendar/', // Replace with your repo name
+  basePath: '/ecbc',
+  assetPrefix: '/ecbc',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 

@@ -111,8 +111,7 @@ export const events: CalendarEvents = [
     link: 'https://www.instagram.com/broadstreetbullies804',
     frequency: 'weekly',
     recurringPattern: {
-      dayOfWeek: 4, // Thursday
-      weekOfMonth: 'every' // Every Thursday
+      dayOfWeek: 4  // Thursday
     }
   }
   // Add new events here following this format:

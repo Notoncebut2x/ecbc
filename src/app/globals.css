@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   text-align: center;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,12 +20,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family);
 }
 
+a {
+  color: #2563eb; /* Tailwind blue-600 */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef4444; /* Tailwind red-500 */
+}
+
 .rotate-hover {
-  transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .rotate-hover:hover {
-  color: #ff0000;
   transform: rotate(-3deg);
 } 

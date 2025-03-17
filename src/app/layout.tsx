@@ -1,9 +1,11 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
-const inter = Inter({ subsets: ['latin'] });
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: 'East Coast ⚡ Bike Calendar',
@@ -20,7 +22,6 @@ export const metadata: Metadata = {
     title: 'East Coast ⚡ Bike Calendar',
     description: 'Community bike events and rides on the East Coast',
   },
-  viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow',
 };
 
@@ -31,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="min-h-screen text-center font-['Courier_New'] antialiased">
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
