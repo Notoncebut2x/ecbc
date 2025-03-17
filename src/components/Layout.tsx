@@ -37,11 +37,11 @@ export default function Layout({
 
         <div className="text-center space-y-2 mb-4">
           <div className="space-x-4">
-            {NAVIGATION.map(({ href, label, value }) => (
+            {NAVIGATION.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className={`px-2 ${pathname === href ? 'font-bold underline' : ''}`}
+                className={`px-2 rotate-hover ${pathname === href ? 'font-bold underline' : ''}`}
               >
                 {label}
               </Link>
@@ -54,7 +54,7 @@ export default function Layout({
                 <button
                   key={location}
                   onClick={() => onLocationSelect(location === selectedLocation ? null : location)}
-                  className={`px-2 ${selectedLocation === location ? 'font-bold underline' : ''}`}
+                  className={`px-2 rotate-hover ${selectedLocation === location ? 'font-bold underline' : ''}`}
                 >
                   {location.split(',')[0]}
                 </button>
@@ -72,6 +72,33 @@ export default function Layout({
         </div>
 
         {children}
+
+        <footer className="mt-16 text-center">
+          <div className="flex items-center justify-center">
+            <a 
+              href="https://buymeacoffee.com/notoncebut2x" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="rotate-hover text-inherit hover:opacity-80 font-mono"
+            >
+              <pre className="text-[0.6rem] leading-[0.6rem] select-none">
+                {'         {\n'}
+                {'      {   }\n'}
+                {'       }_{ __{\n'}
+                {'    .-{   }   }-.\n'}
+                {'   (   }     {   )\n'}
+                {'   |`-.._____..-\'|\n'}
+                {'   |             ;--.\n'}
+                {'   |   Buy me   (__  \\\n'}
+                {'   |      a      | )  )\n'}
+                {'   |   coffee    |/  /\n'}
+                {'   |             /  /\n'}
+                {'   \\             y\'\n'}
+                {'    `-.._____..-\''}
+              </pre>
+            </a>
+          </div>
+        </footer>
       </div>
     </main>
   );
