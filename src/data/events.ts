@@ -114,10 +114,9 @@ export const events: CalendarEvents = [
       dayOfWeek: 4  // Thursday
     }
   },
-  ,
   {
     id: '12',
-    title: 'Dirt Rooster Gravel Ride',
+    title: 'Dirt Rooster: Gravel Ride',
     date: '2025-03-23',
     location: 'Baltimore, Maryland',
     link: 'https://www.instagram.com/p/DHMGShDsr80/',
