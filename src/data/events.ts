@@ -33,7 +33,7 @@ export const events: CalendarEvents = [
     title: 'Bike Kill',
     date: '2024-10-31',
     location: 'New York, New York',
-    link: 'https://www.instagram.com/blacklabelnewyork',
+    link: '',
     frequency: 'annual'
   },
   {
@@ -49,7 +49,7 @@ export const events: CalendarEvents = [
     title: 'Warriors Bike Ride',
     date: '2024-07-06',
     location: 'New York, New York',
-    link: 'https://www.instagram.com/warriorsbikeride',
+    link: 'https://www.instagram.com/warriorsnyc',
     frequency: 'annual'
   },
   {

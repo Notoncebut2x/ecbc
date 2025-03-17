@@ -32,9 +32,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="/ecbc/globals.css" />
-      </head>
       <body className="min-h-screen text-center font-['Courier_New'] antialiased">
         <ErrorBoundary>
           {children}
