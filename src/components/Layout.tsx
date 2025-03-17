@@ -2,7 +2,6 @@ import { CalendarEvent } from '@/types/calendar';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata, Viewport } from 'next';
-import '@/app/globals.css';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 interface LayoutProps {
