@@ -113,6 +113,15 @@ export const events: CalendarEvents = [
     recurringPattern: {
       dayOfWeek: 4  // Thursday
     }
+  },
+  ,
+  {
+    id: '12',
+    title: 'Dirt Rooster Gravel Ride',
+    date: '2025-03-23',
+    location: 'Baltimore, Maryland',
+    link: 'https://www.instagram.com/p/DHMGShDsr80/',
+    frequency: 'annual'
   }
   
   // Add new events here following this format:
