@@ -3,6 +3,9 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata, Viewport } from 'next';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { trackNavigationClick } from '@/utils/analytics';
+import { useEffect } from 'react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -51,9 +54,14 @@ export default function Layout({
 }: LayoutProps) {
   const pathname = usePathname();
 
+  useEffect(() => {
+    trackNavigationClick(pathname);
+  }, [pathname]);
+
   return (
     <html lang="en">
       <body className="min-h-screen font-['Courier_New'] antialiased">
+        <GoogleAnalytics gaId="G-VG95SWNN4R" />
         <main className="min-h-screen p-8">
           <div className="w-full max-w-2xl mx-auto text-lg font-['Courier_New']">
             <h1 className="text-center mb-4 text-[1.75rem] font-bold">

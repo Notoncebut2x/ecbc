@@ -18,6 +18,7 @@ import {
   getDaysInMonth,
   parseISO
 } from 'date-fns';
+import { trackEventClick } from '@/utils/analytics';
 
 interface CalendarProps {
   events: CalendarEvent[];
@@ -232,6 +233,10 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
 
 // Memoize the EventItem component to prevent unnecessary re-renders
 const EventItem = memo(function EventItem({ event, isPast, isNextUpcoming }: { event: ProcessedEvent, isPast: boolean, isNextUpcoming: boolean }) {
+  const handleEventClick = () => {
+    trackEventClick(event.title, event.title, event.location);
+  };
+
   return (
     <li 
       className={`transition-all duration-300 relative ${
@@ -246,6 +251,7 @@ const EventItem = memo(function EventItem({ event, isPast, isNextUpcoming }: { e
           target="_blank"
           rel="noopener noreferrer"
           className={`rotate-hover ${isPast ? 'text-red-300 hover:text-red-400' : 'text-red-500 hover:text-red-600'}`}
+          onClick={handleEventClick}
         >
           {event.title}
         </a>
