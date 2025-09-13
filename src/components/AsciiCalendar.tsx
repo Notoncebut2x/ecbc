@@ -170,6 +170,7 @@ export default function AsciiCalendar({ events, selectedLocation, selectedFreque
       const weekStart = startOfWeek(currentDate);
       const weekEnd = endOfWeek(currentDate);
       return `${format(weekStart, 'MMM d')} - ${format(weekEnd, 'MMM d, yyyy')}`;
+    }
   };
 
   return (
@@ -248,7 +249,28 @@ export default function AsciiCalendar({ events, selectedLocation, selectedFreque
                   className="text-xs text-red-500 font-bold leading-tight mb-1 truncate"
                   title={`${event.title} - ${event.location}`}
                 >
-                  {event.title}
+                  {event.link ? (
+                    <a
+                      href={event.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-500 hover:text-red-600 transition-colors"
+                      onClick={() => {
+                        // Track the click for analytics
+                        if (typeof window !== 'undefined' && (window as any).gtag) {
+                          (window as any).gtag('event', 'click', {
+                            event_category: 'Event',
+                            event_label: event.title,
+                            value: event.location
+                          });
+                        }
+                      }}
+                    >
+                      {event.title}
+                    </a>
+                  ) : (
+                    event.title
+                  )}
                 </div>
               ))}
             </div>
