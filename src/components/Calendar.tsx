@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, memo } from 'react';
+import React, { useMemo, memo, useState } from 'react';
 import { CalendarEvent, WeekOfMonth, ProcessedEvent } from '@/types/calendar';
 import { 
   format, 
@@ -19,6 +19,7 @@ import {
   parseISO
 } from 'date-fns';
 import { trackEventClick } from '@/utils/analytics';
+import AsciiCalendar from './AsciiCalendar';
 
 interface CalendarProps {
   events: CalendarEvent[];
@@ -125,6 +126,8 @@ function getNextOccurrence(event: CalendarEvent, today: Date): Date | null {
 }
 
 export default function Calendar({ events, selectedLocation, selectedFrequency, onReset }: CalendarProps) {
+  const [viewMode, setViewMode] = useState<'list' | 'calendar'>('list');
+
   // Memoize the today date to prevent unnecessary recalculations
   const today = useMemo(() => {
     const date = new Date();
@@ -203,30 +206,66 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
 
   return (
     <div className="w-full max-w-2xl mx-auto text-lg font-['Courier_New']">
-      <ul className="list-none p-0 space-y-4">
-        {sortedEvents.map((event) => {
-          const isPast = event.displayDate < today;
-          const isNextUpcoming = nextUpcomingEvent && 
-            event.displayDate.getTime() === nextUpcomingEvent.displayDate.getTime() &&
-            event.id === nextUpcomingEvent.id;
-
-          return (
-            <EventItem 
-              key={`${event.id}-${(event as ProcessedEvent).occurrenceType || 'single'}`}
-              event={event}
-              isPast={isPast}
-              isNextUpcoming={isNextUpcoming}
-            />
-          );
-        })}
-      </ul>
-      <div className="mt-8">
-        <pre className="text-center select-none text-[0.5rem] leading-[0.5rem]">
-          {'   \\  /   \\  /   \\  /   \\  /   \\  /  \n'}
-          {'---///----///----///----///----///---\n'}
-          {'  /  \\   /  \\   /  \\   /  \\   /  \\  '}
-        </pre>
+      {/* View Toggle */}
+      <div className="flex justify-center mb-6">
+        <div className="flex space-x-2">
+          <button
+            onClick={() => setViewMode('list')}
+            className={`px-4 py-2 text-sm border ${
+              viewMode === 'list' 
+                ? 'bg-red-500 text-white border-red-500' 
+                : 'border-gray-300 hover:border-red-500'
+            }`}
+          >
+            List View
+          </button>
+          <button
+            onClick={() => setViewMode('calendar')}
+            className={`px-4 py-2 text-sm border ${
+              viewMode === 'calendar' 
+                ? 'bg-red-500 text-white border-red-500' 
+                : 'border-gray-300 hover:border-red-500'
+            }`}
+          >
+            Calendar View
+          </button>
+        </div>
       </div>
+
+      {viewMode === 'list' ? (
+        <>
+          <ul className="list-none p-0 space-y-4">
+            {sortedEvents.map((event) => {
+              const isPast = event.displayDate < today;
+              const isNextUpcoming = nextUpcomingEvent && 
+                event.displayDate.getTime() === nextUpcomingEvent.displayDate.getTime() &&
+                event.id === nextUpcomingEvent.id;
+
+              return (
+                <EventItem 
+                  key={`${event.id}-${(event as ProcessedEvent).occurrenceType || 'single'}`}
+                  event={event}
+                  isPast={isPast}
+                  isNextUpcoming={isNextUpcoming}
+                />
+              );
+            })}
+          </ul>
+          <div className="mt-8">
+            <pre className="text-center select-none text-[0.5rem] leading-[0.5rem]">
+              {'   \\  /   \\  /   \\  /   \\  /   \\  /  \n'}
+              {'---///----///----///----///----///---\n'}
+              {'  /  \\   /  \\   /  \\   /  \\   /  \\  '}
+            </pre>
+          </div>
+        </>
+      ) : (
+        <AsciiCalendar 
+          events={events}
+          selectedLocation={selectedLocation}
+          selectedFrequency={selectedFrequency}
+        />
+      )}
     </div>
   );
 }
