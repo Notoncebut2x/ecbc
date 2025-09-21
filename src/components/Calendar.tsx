@@ -211,23 +211,23 @@ export default function Calendar({ events, selectedLocation, selectedFrequency, 
         <div className="flex space-x-2">
           <button
             onClick={() => setViewMode('list')}
-            className={`px-4 py-2 text-sm border ${
+            className={`px-2 py-1 text-lg font-['Courier_New'] ${
               viewMode === 'list' 
-                ? 'bg-red-500 text-white border-red-500' 
-                : 'border-gray-300 hover:border-red-500'
+                ? 'text-red-500' 
+                : 'text-gray-400 hover:text-red-500'
             }`}
           >
-            List View
+            ☰
           </button>
           <button
             onClick={() => setViewMode('calendar')}
-            className={`px-4 py-2 text-sm border ${
+            className={`px-2 py-1 text-lg font-['Courier_New'] ${
               viewMode === 'calendar' 
-                ? 'bg-red-500 text-white border-red-500' 
-                : 'border-gray-300 hover:border-red-500'
+                ? 'text-red-500' 
+                : 'text-gray-400 hover:text-red-500'
             }`}
           >
-            Calendar View
+            ⊞
           </button>
         </div>
       </div>
@@ -281,7 +281,7 @@ const EventItem = memo(function EventItem({ event, isPast, isNextUpcoming }: { e
       className={`transition-all duration-300 relative ${
         isPast ? 'text-gray-400' : 'text-black'
       } ${
-        isNextUpcoming ? 'after:content-[""] after:absolute after:left-[20%] after:right-[20%] after:bottom-0 after:h-[3px] after:bg-red-500/80 after:rotate-[358deg] after:-z-10' : ''
+        isNextUpcoming ? 'after:content-[""] after:absolute after:left-[25%] after:right-[25%] after:bottom-0 after:h-[3px] after:bg-red-500/70 after:rotate-[359deg] after:-z-10 after:rounded-none after:shadow-none after:opacity-80' : ''
       }`}
     >
       {format(event.displayDate, 'MMMM d, yyyy')}: {event.link ? (
